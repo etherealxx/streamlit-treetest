@@ -52,7 +52,7 @@ def walkdown():
                 elif os.path.isfile(os.path.join(starting_directory, fileorfol)):
                     file_list.append(fileorfol)
             break
-        except PermissionError as e:
+        except (PermissionError, FileNotFoundError) as e:
             print(str(e))
             st.cache_data.clear()
             st.session_state.starting_directory = st.session_state.default_starting_directory
